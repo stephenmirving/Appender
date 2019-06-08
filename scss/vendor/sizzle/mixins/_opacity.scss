@@ -1,0 +1,24 @@
+@charset 'UTF-8';
+
+// Takes a given value in either 0-1 decimal or 2-100 integer scale and applies
+// that level of opacity along with the filter property for IE8 support
+///
+/// @param {Number} $opacity - The opacity level
+///
+/// @throw $opacity out of range
+@mixin opacity($opacity) {
+  @if ($opacity > 1) {
+    @if ($opacity > 100) {
+      @warn 'Opacity was set to #{$opacity} on an element. Value has been ' +
+          'changed to the max of 1.';
+      $opacity: 100;
+    }
+    $opacity: $opacity / 100;
+  }
+  @if ($opacity == 1) { // For IE 8
+    filter: unquote('progid:DXImageTransform.Microsoft.Alpha(enabled=false)');
+  } @else {
+    filter: unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})');
+  }
+  opacity: $opacity;
+}

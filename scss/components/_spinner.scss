@@ -1,0 +1,11 @@
+// components/_spinner.scss
+
+.spinner {
+  @include gradient($black, get-val($color-palette, 'primary'), d2, 0%, 70%);
+  // animation: spin-forever 3s linear .15s infinite both;
+  @include bounce($delay: .8s);
+  border-radius: 50%;
+  border: .4rem solid $white;
+  height: 12rem;
+  width: 12rem;
+}

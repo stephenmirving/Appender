@@ -1,0 +1,104 @@
+@charset 'UTF-8';
+
+/// Apply a background image with a version that is scaled to 2x for HiDPI and
+/// Retina displays.
+///
+/// @param {URL} $img - Location of the image. Must be in quotes to be read.
+/// @param {Length-Percentage} $bg-width - Width component of the background-size
+/// property value for the image.
+/// @param {Length-Percentage} $bg-height [$bg-width] - Height component of the
+/// background-size property value for the image.
+/// @param {Map} $extra-hidpi-properties [null] - You can pass this argument
+/// a map of property: value pairs that will be added to the HiDPI/Retina
+/// media query.
+/// @param {String} $img-2x-suffix ['-2x']- The suffix that is is appended to
+/// the end of image name to designate that it is the 2x version for HiDPI
+/// displays. By default, this will look for the $image-2x-suffix global
+/// variable to use, and if it cannot be found it will just use '-2x'.
+///
+/// @throw Invalid $bg-width data type
+/// @throw Invalid $bg-height data type
+/// @throw Invalid $img file name
+@mixin bg-image(
+  $img,
+  $bg-width,
+  $bg-height: $bg-width,
+  $extra-hidpi-properties: null,
+  $img-2x-suffix: if(global-variable-exists(image-2x-suffix), $image-2x-suffix, '@2x')
+) {
+  $hidpi-img: $img;
+
+  @if (not $extra-hidpi-properties or $extra-hidpi-properties == 'none'
+      or $extra-hidpi-properties == 'no' or $extra-hidpi-properties == nil
+      or $extra-hidpi-properties == 'n/a' or $extra-hidpi-properties == ' ') {
+
+    $extra-hidpi-properties: null;
+  }
+
+  @if (not $bg-width or $bg-width == 'none' or $bg-width == 'no'
+      or $bg-width == nil or $bg-width == 'n/a' or $bg-width == ' ') {
+
+    $bg-width: null;
+  } @else if (type-of($bg-width) != 'number' or type-of($bg-height) != 'number') {
+    @error 'Invalid type for the dimensions used in the `bg-image` mixin.';
+  } @else {
+    $bg-width: if((unitless($bg-width)), $bg-width*1px, $bg-width);
+    $bg-height: if((unitless($bg-height)), $bg-height*1px, $bg-height);
+  }
+
+  @if (str-index($img, '.png') != null or str-index($img, '.svg') != null
+      or str-index($img, '.gif') != null or str-index($img, '.jpg') != null
+      or str-index($img, '.jpx') != null or str-index($img, '.jp2') != null
+      or str-index($img, '.j2c') != null or str-index($img, '.j2k') != null
+      or str-index($img, '.jps') != null or str-index($img, '.ppm') != null
+      or str-index($img, '.iff') != null or str-index($img, '.tdi') != null
+      or str-index($img, '.dmc') != null or str-index($img, '.dc3') != null
+      or str-index($img, '.dic') != null or str-index($img, '.mpo') != null
+      or str-index($img, '.bmp') != null or str-index($img, '.pxr') != null
+      or str-index($img, '.tga') != null and str-index($img, '.vda') != null
+      or str-index($img, '.icb') != null and str-index($img, '.vst') != null
+      or str-index($img, '.pcx') != null and str-index($img, '.tif') != null
+      or str-index($img, '.pcx') != null and str-index($img, '.tif') != null
+      or str-index($img, '.pcx') != null and str-index($img, '.tif') != null
+      or str-index($img, '.jpf') != null or (str-index($img, '.jpeg') == null
+      and str-index($img, '.jpe') != null) or (str-index($img, '.tiff') == null
+      and str-index($img, '.tif') != null)) {
+
+    $hidpi-img: str-insert($img, $img-2x-suffix, str-length($img) - 3);
+  } @else if (str-index($img, '.tiff') != null
+      or str-index($img, '.jpeg') != null
+      or str-index($img, '.webp') != null) {
+
+    $hidpi-img: str-insert($img, $img-2x-suffix, str-length($img) - 4);
+  } @else if (str-index($img, '.') != null) {
+    @warn 'You are using an unknown file type on the image you referenced in ' +
+        'the `bg-image` mixin. Please ensure you are using a valid image file' +
+        ' type. If you use an unknown file type with multiple `.` characters ' +
+        'the `bg-image` mixin may not work correctly.';
+    $hidpi-img: str-insert($img, $img-2x-suffix, str-index($img, '.'));
+  } @else {
+    @error 'The image you referenced in the `bg-image` mixin does not have a ' +
+        'file type.';
+  }
+  // Normal sized image
+  background-image: url(#{$img});
+  @if ($bg-width) {
+    background-size: $bg-width $bg-height;
+  }
+
+  // Scaled up version of the image for HiDPI displays
+  @media only screen and (-webkit-min-device-pixel-ratio: 1.3),
+         only screen and (min--moz-device-pixel-ratio: 1.3),
+         only screen and (-o-min-device-pixel-ratio: 13/10),
+         only screen and (min-device-pixel-ratio: 1.3),
+         only screen and (min-resolution: 124.8dpi),
+         only screen and (min-resolution: 1.3dppx) {
+    background-image: url(#{$hidpi-img});
+    @if ($extra-hidpi-properties and $extra-hidpi-properties != ()) {
+      $key-list: map-keys($extra-hidpi-properties);
+      @each $key in $key-list {
+        #{$key}: map-get($extra-hidpi-properties, $key);
+      }
+    }
+  }
+}

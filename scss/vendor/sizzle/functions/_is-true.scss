@@ -1,0 +1,10 @@
+@charset 'UTF-8';
+
+/// Returns the truthiness of `$value`.
+/// @access public
+///
+/// @param {*} $value - A value to check.
+/// @return {Boolean} Returns true if `value` has truthiness.
+@function is-true($value) {
+  @return if($value == null, false, $value and $value != null and $value != '' and $value != ());
+}

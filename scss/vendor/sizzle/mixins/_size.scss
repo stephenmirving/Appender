@@ -1,0 +1,17 @@
+@charset 'UTF-8';
+
+/// Helper utility to set both height and weight at the same time. Pass a single
+///  value to set both height and width to the same size.
+///
+/// @param {Length-Percentage|Keyword} $width - A length dimension (ex. 20rem or
+/// 300px or 10%). If `max` is passed then both height and width are set to 100%.
+/// @param {Length-Percentage} $height [$width] - A length dimension. If no
+/// value is entered $height is set equal to $width.
+@mixin size($width, $height: $width) {
+  @if $width == 'max' {
+    $height: 100%;
+    $width: 100%;
+  }
+  height: $height;
+  width: $width;
+}

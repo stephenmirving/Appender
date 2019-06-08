@@ -1,0 +1,110 @@
+@charset 'UTF-8';
+
+/// Base font size for unit conversion. Default is 16 for 16px at 100%
+/// Common alternate is 10 for 10px at 62.5% for easier conversion
+/// @access public
+/// @type Number
+$base-font-size: 10 !default;
+
+/// Example font stack map with web-safe fonts. Use with the font-stack function
+/// @access public
+/// @type Map
+/// @todo Fill out the stack with the fonts you choose for your theme
+$font-stack: (
+  'primary': (Roboto, Helvetica, Arial, 'Nimbus Sans L', -apple-system, system-ui, BlinkMacSystemFont, sans-serif),
+  'secondary': (
+    -apple-system,
+    system-ui,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif
+  ),
+  'header': (Lato, Verdana, Geneva, 'DejaVu Sans', -apple-system, system-ui, BlinkMacSystemFont, sans-serif),
+  'georgia': (Georgia, 'URW Bookman L', serif),
+  'helvetica': (Helvetica, Arial, 'Nimbus Sans L', sans-serif),
+  'lucida-grande': (
+    'Lucida Grande',
+    'Lucida Sans Unicode',
+    'Bitstream Vera Sans',
+    sans-serif
+  ),
+  'monospace': ('Courier New', Courier, 'Nimbus Sans L', monospace),
+  'system': (
+    -apple-system,
+    system-ui,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif
+  ),
+  'verdana': (Verdana, Geneva, 'DejaVu Sans', sans-serif)
+);
+
+/// Base path for assets (fonts, images...), should not include trailing slash
+/// @access public
+/// @type String
+$asset-base-path: '../assets' !default;
+
+/// Suffix appended to the end of an image name to indicate that it is for HiDPI
+/// Retina displays
+/// @access public
+/// @type String
+$image-2x-suffix: '@2x' !default;
+
+/// Colors used for buttons, callouts, links, etc.
+/// @type Map
+/// @todo Fill out with the colors you choose for your theme
+$color-palette: (
+  primary: #1779BA,
+  secondary: #767676,
+  success: #3ADB76,
+  warning: #FFAE00,
+  alert: #CC4B37,
+) !default;
+
+/// Color used for black UI items.
+/// @type Color
+$black: #0A0A0A !default;
+
+/// Color used for off-black UI items.
+/// @type Color
+$off-black: #3E3E3E;
+
+/// Color used for dark gray UI items.
+/// @type Color
+$dark-gray: #8A8A8A !default;
+
+/// Color used for medium gray UI items.
+/// @type Color
+$medium-gray: #CACACA !default;
+
+/// Color used for light gray UI items.
+/// @type Color
+$light-gray: #E6E6E6 !default;
+
+/// Color used for off-white UI items.
+/// @type Color
+$off-white: #F2F2F2;
+
+/// Color used for white UI items.
+/// @type Color
+$white: #FEFEFE !default;
+
+/// Transitions for buttons.
+/// @type List
+$button-transition: background-color .5s ease-out, color .5s ease-out !default;

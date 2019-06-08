@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+
+/// Absolutely centers the element inside of its first non-static parent.
+/// @alias abs-center
+@mixin absolute-center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/// Absolutely centers the element inside of its first non-static parent.
+/// @alias absolute-center
+@mixin abs-center {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

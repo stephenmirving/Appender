@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+
+/// Apply the given styles to IE 10 and 11 only using a media query.
+///
+/// @content Styles that target IE 10 or IE 11.
+/// @alias ie-only
+@mixin only-ie {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}
+
+/// Apply the given styles to IE 10 and 11 only using a media query.
+/// @alias only-ie
+@mixin ie-only {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    @content;
+  }
+}

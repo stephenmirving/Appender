@@ -1,0 +1,13 @@
+@charset 'UTF-8';
+
+/// Just another way to reference the clip-path octagon shape mixin
+///
+/// @param {Color|Mixed} $bg [#8B0000] - Can be any value that is valid for the
+/// background shorthand property.
+/// @param {Length-Percentage} $size [15rem] - The height and width of
+/// the element.
+/// @param {Color} $fg-color [#FFF] - Optional argument that sets the color
+/// property for the elment.
+@mixin stop-sign($bg: #8B0000, $size: 15rem, $fg-color: #FFF) {
+  @include octagon($bg, $size, $fg);
+}

@@ -1,0 +1,45 @@
+@charset 'UTF-8';
+
+/// Vertically aligns an alement using absolute positioning and transform. You
+/// can modify the $pos argument to change the top property's value to alter
+/// the vertical alignment.
+///
+/// @param {Position} $pos [50%] - The top property value. 50% will put the
+/// element in the vertical center.
+///
+/// @throw $pos value out of range
+@mixin align-vertically($pos: 50%) {
+  @if ($pos == 'middle' or $pos == 'center' or $pos == 'c' or $pos == 'm') {
+    $pos: 50%;
+  }
+  @if (unitless($pos)) {
+    $pos: $pos * 1%;
+  }
+  @if ($pos < 0% or $pos > 100%) {
+    @error 'The top position value of `#{$pos}` is out of range for the ' +
+        '`vert-align` mixin. You must choose a value between 0 and 100, ' +
+        'inclusive.';
+  }
+  @if (type-of($pos) == 'number' and unit($pos) != '%') {
+    $pos: #{$pos + '%'};
+  }
+  position: absolute;
+  top: $pos;
+  transform: translateY(-50%);
+}
+
+/// Vertically center an alement using relative positioning and transform.
+/// @alias vertical-center
+@mixin center-vertically {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/// Vertically center an alement using relative positioning and transform.
+/// @alias center-vertically
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

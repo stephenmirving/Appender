@@ -1,0 +1,45 @@
+@charset 'UTF-8';
+
+/// Vertically aligns an alement using absolute positioning and transform. You
+/// can modify the $pos argument to change the left property's value to alter
+/// the horizontal alignment.
+///
+/// @param {Position} $pos [50%] - The top property value. 50% will put the
+/// element in the vertical center.
+///
+/// @throw $pos value out of range
+@mixin align-horizontally($pos: 50%) {
+  @if $pos == 'middle' or $pos == 'center' or $pos == 'c' or $pos == 'm' {
+    $pos: 50%;
+  }
+  @if unitless($pos) {
+    $pos: $pos * 1%;
+  }
+  @if $pos < 0% or $pos > 100% {
+    @error 'The top position value of `#{$pos}` is out of range for the ' +
+        '`align-horizontally` mixin. You must choose a value between 0 and ' +
+        '100, inclusive.';
+  }
+  @if str-slice($pos + '', str-length($pos + '')) != '%' {
+    $pos: #{$pos + '%'};
+  }
+  left: $pos;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+/// Horizontally centers the element inside of its first non-static parent.
+/// @alias horizontal-center
+@mixin center-horizontally {
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+/// Horizontally centers the element inside of its first non-static parent.
+/// @alias center-horizontally
+@mixin horizontal-center {
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+}

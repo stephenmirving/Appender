@@ -1,0 +1,24 @@
+@charset 'UTF-8';
+
+/// Force grayscale anti-aliasing on HiDPI/Retina screens.
+///
+/// @param {Boolean} $is-internal [false] - Pass true if the @include statement
+/// calling this mixin is inside an existing selector.
+@mixin smooth-retina-fonts($is-internal: false) {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+         only screen and (min--moz-device-pixel-ratio: 2),
+         only screen and (-o-min-device-pixel-ratio: 2/1),
+         only screen and (min-device-pixel-ratio: 2),
+         only screen and (min-resolution: 192dpi),
+         only screen and (min-resolution: 2dppx) {
+    @if $is-internal {
+      body {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+      }
+    } @else {
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+    }
+  }
+}

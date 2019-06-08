@@ -1,0 +1,79 @@
+@charset 'UTF-8';
+
+/// Applies a fast custom scrollbar to the page, or to an internal element
+/// within the page. The effect works only in webkit based browsers (Chrome,
+/// Safari, Opera, etc.), but it will apply the custom foreground and background
+/// color to the scrollbar in Internet Explorer.
+///
+/// @param {Length} $size - The height and width of the custom scrollbar
+/// @param {Color|Gradient} $fg-color - The color of the foreground or 'handle'
+/// of the scrollbar
+/// @param {Color|Gradient} $bg-color [mix($fg-color, #000, 50%)] - The color
+/// of the background of the scrollbar
+/// @param {Lenth-Percentage} $radius [null] - The optional border radius
+/// value of the scrollbar
+/// @param {Boolean} $is-internal [false] - Pass a true value if the scrollbar
+/// is inside of an element other than the body of the document
+@mixin scrollbar(
+  $size,
+  $fg-color,
+  $bg-color: mix($fg-color, #000, 50%),
+  $radius: null,
+  $is-internal: false
+) {
+  @if ($is-internal) {
+    & {
+      scrollbar-face-color: $fg-color;  // For IE
+      scrollbar-track-color: $bg-color; // For IE
+
+      &::-webkit-scrollbar {
+        height: $size;
+        width: $size;
+
+        &-track {
+          background: $bg-color;
+          @if $radius {
+            border-radius: $radius;
+          }
+        }
+
+        &-thumb {
+          background: $fg-color;
+          @if $radius {
+            border-radius: $radius;
+          }
+
+          &:hover { background: mix(#000, $fg-color, 17.5%); }
+
+          &:active {
+            background: mix(#000, $fg-color, 35%);
+            box-shadow: inset 1px 1px 3px rgba(mix(#FFF, $fg-color, 30%), .4);
+          }
+        }
+      }
+    }
+  } @else {
+    ::-webkit-scrollbar {
+      height: $size;
+      width: $size;
+
+      &-track { background: $bg-color; }
+
+      &-thumb {
+        background: $fg-color;
+
+        &:hover { background: mix(#000, $fg-color, 17.5%); }
+
+        &:active {
+          background: mix(#000, $fg-color, 35%);
+          box-shadow: inset 1px 1px 3px rgba(mix(#FFF, $fg-color, 30%), .5);
+        }
+      }
+    }
+
+    body { //For IE
+      scrollbar-face-color: $fg-color;
+      scrollbar-track-color: $bg-color;
+    }
+  }
+}

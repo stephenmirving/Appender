@@ -1,0 +1,10 @@
+@charset 'UTF-8';
+
+/// Checks if a value is a frequency
+/// @access public
+
+/// @param {*} $value - A value to be checked
+/// @return {Boolean} True if $value is a frequency, false if it is not
+@function is-frequency($value) {
+  @return is-number($value) and index('Hz' 'kHz', unit($value)) != null;
+}

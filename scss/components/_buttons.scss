@@ -1,0 +1,35 @@
+// components/_buttons.scss
+
+.btn {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+  border-radius: 999px;
+  padding: 1rem 1.5rem;
+  margin: .5rem 1rem;
+  transition: $button-transition;
+
+  &--primary {
+    @extend .btn;
+    background: get-val($color-palette, 'primary') padding-box;
+    border: 2px solid $silver;
+    color: $white;
+    font-size: calc(2rem * var(--size-multiple));
+    font-variant: small-caps;
+    font-weight: 700;
+
+    &:focus,
+    &:hover {
+      background: padding-box;
+      border-color: get-val($color-palette, 'primary');
+      color: get-val($color-palette, 'warning');
+    }
+
+    &:active {
+      @include text-shadow(0, 1px, 1px, rgba($off-black, .4));
+      background: padding-box;
+      border-color: shade(get-val($color-palette, 'warning'), 20%);
+      box-shadow: inset 2px 2px 3px rgba(get-val($color-palette, 'warning'), .3);
+      color: shade(get-val($color-palette, 'warning'), 20%);
+    }
+  }
+}

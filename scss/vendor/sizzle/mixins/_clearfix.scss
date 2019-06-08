@@ -1,0 +1,21 @@
+@charset 'UTF-8';
+
+/// Applies the float clearing 'clearfix' hack
+/// @param {Value} $clear-val - The 'clear' value: left, right, or both
+///
+/// @throw Invalid $clear-val value
+@mixin clearfix($clear-val: both) {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: $clear-val;
+  }
+  @if ($clear-val != 'both' and $clearVal != 'left' and $clearVal != 'right') {
+    @error '\'#{$clearVal}\' is not a valid value for the clear property in ' +
+      'the `clearfix` mixin. CTRL+F \'#{$clearVal}\' to fix.';
+  }
+}

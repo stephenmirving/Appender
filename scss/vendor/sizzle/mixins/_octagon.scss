@@ -1,0 +1,22 @@
+@charset 'UTF-8';
+
+/// Uses clip path to change an element to the shape of an octagon
+///
+/// @param {Color|Value} $bg [#8B0000] - Can be any value that is valid for the
+/// background shorthand property.
+/// @param {Length-Percentage} $size [15rem] - The height and width of
+/// the element.
+/// @param {Color} $fg-color [null] - Optional argument that sets the color
+/// property for the elment.
+@mixin octagon($bg: #8B0000, $size: 15rem, $fg-color: null) {
+  background: $bg;
+  @if ($fg-color) {
+    color: $fg-color;
+  }
+  -webkit-clip-path: polygon( 30% 0, 70% 0, 100% 30%, 100% 70%,
+                              70% 100%, 30% 100%, 0 70%, 0 30% );
+          clip-path: polygon( 30% 0, 70% 0, 100% 30%, 100% 70%,
+                              70% 100%, 30% 100%, 0 70%, 0 30% );
+  height: $size;
+  width: $size;
+}

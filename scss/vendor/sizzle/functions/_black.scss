@@ -1,0 +1,16 @@
+@charset 'UTF-8';
+
+/// Helper function, mix black with a given opacity level.000
+/// @access public
+///
+/// @param {Number} $opacity - An opacity level between 0 and 1 inclusive
+/// @return {Color} The transluscent black
+///
+/// @throw $opacity out of range
+@function black($opacity) {
+  @if ($opacity < 0 or $opacity > 1) {
+    @error 'The mixin `black` was set to an incorrect opacity level of ' +
+        '`#{$opacity}`.';
+  }
+  @return rgba(#000, $opacity);
+}

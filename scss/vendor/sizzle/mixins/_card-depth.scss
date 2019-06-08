@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+
+/// Gives an element a depth effect based on Google's Material Design principles.
+/// @link http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality
+///
+/// @param {Number} $depth - Depth level (must be between 0 and 5)
+///
+/// @require {function} top-shadow
+/// @require {function} bottom-shadow
+/// @throw Invalid $depth level
+@mixin card-depth($depth) {
+  @if ($depth == 0) {
+    box-shadow: none;
+  } @else if ($depth < 0 or $depth > 5) {
+    @error 'Invalid $depth of `#{$depth}` for `card` mixin.';
+  } @else {
+    box-shadow: bottom-shadow($depth), top-shadow($depth);
+  }
+}

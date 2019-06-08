@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+
+/// Apply the given styles to MS Edge only by using an @supports query
+///
+/// @content Styles that target MS Edge.
+/// @alias edge-only
+@mixin only-edge {
+  @supports (position: -ms-page) {
+    @content;
+  }
+}
+
+/// Apply the given styles to MS Edge only by using an @supports query
+/// @alias only-edge
+@mixin edge-only {
+  @supports (position: -ms-page) {
+    @content;
+  }
+}

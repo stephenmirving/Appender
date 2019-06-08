@@ -1,0 +1,9 @@
+@charset 'UTF-8';
+
+/// Adds a colored text outline to a font
+///
+/// @param {Color} $color [#0A0A0A} The outline color for the font.
+@mixin text-outline($color: #0A0A0A) {
+  text-shadow: -1px -1px 0 #{$color}, 1px -1px 0 #{$color},
+               -1px 1px 0 #{$color}, 1px 1px 0 #{$color};
+}

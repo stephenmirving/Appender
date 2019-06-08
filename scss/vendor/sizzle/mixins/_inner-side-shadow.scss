@@ -1,0 +1,34 @@
+@charset 'UTF-8';
+
+/// Creates an inner box-shadow for only one side
+///
+/// @param {Keyword} $side [bottom] - Side the shadow is supposed to appear.
+/// Can be `top`, `left`, `right` or `bottom`.
+/// @param {Length} $size [20px] - Width for the target side.
+/// @param {Color} $color [rgba($black, .3)] - Color of the shadow.
+@mixin inner-side-shadow(
+  $side: 'bottom',
+  $size: 20px,
+  $color: if(global-variable-exists(#{black}), rgba($black, .3), rgba(#000, .3))
+) {
+  @if (unitless($size)) {
+    $size: $size * 1px;
+  }
+
+  $helper: round($size * .65);
+
+  @if (to-lower-case($side) == 'top' or to-lower-case($side) == 't'
+      or to-lower-case($side) == 'up' or to-lower-case($side) == 'u') {
+    box-shadow: inset 0 $helper $size (-1)*$helper $color;
+  } @else if (to-lower-case($side) == 'left' or to-lower-case($side) == 'l') {
+    box-shadow: inset $helper 0 $size (-1)*$helper $color;
+  } @else if (to-lower-case($side) == 'right' or to-lower-case($side) == 'r') {
+    box-shadow: inset (-1)*$helper 0 $size (-1)*$helper $color;
+  } @else if (to-lower-case($side) == 'bottom' or to-lower-case($side) == 'b'
+      or to-lower-case($side) == 'btm' or to-lower-case($side) == 'down'
+      or to-lower-case($side) == 'd') {
+    box-shadow: inset 0 (-1)*$helper $size (-1)*$helper $color;
+  } @else {
+    @error 'Invalid side value of `#{$side} for the `inner-side-shadow` mixin.';
+  }
+}

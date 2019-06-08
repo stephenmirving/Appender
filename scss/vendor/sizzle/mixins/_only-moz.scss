@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+
+/// Apply the given styles to Mozilla based browsers only.
+///
+/// @content Styles to apply to Mozilla browsers.
+/// @alias moz-only
+@mixin only-moz {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}
+
+/// Apply the given styles to Mozilla based browsers only.
+/// @alias only-moz
+@mixin moz-only {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}

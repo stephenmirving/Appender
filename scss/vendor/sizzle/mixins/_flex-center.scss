@@ -1,0 +1,34 @@
+@charset 'UTF-8';
+
+/// Uses flex-box to vertically and horizontally center an element while also
+/// providing the optimal vendor prefixes necessary to target IE 10 and older
+/// webkit based browsers.
+///
+/// @param {Boolean} $center-horizontally [true] - Pass true to center the
+/// contents horizontally.
+/// @param {Boolean} $center-vertically [true] - Pass true to center the
+/// contents vertically.
+///
+/// @throw Invalid $center-horizontally value
+/// @throw Invalid $center-vertically value
+@mixin flex-center($center-horizontally: true, $center-vertically: true) {
+  @if ($center-horizontally != true and $center-horizontally != false
+      and $center-horizontally != null) {
+
+    @error 'Invalid $center-horizontally value for the `flex-center` mixin. ' +
+        'Must pass either `true` or `false`.';
+  }
+  @if ($center-vertically != true and $center-vertically != false
+      and $center-vertically != null) {
+
+    @error 'Invalid $center-vertically value for the `flex-center` mixin. ' +
+        'Must pass either `true` or `false`.';
+  }
+  @if $center-vertically {
+    align-items: center;
+  }
+  display: flex;
+  @if $center-horizontally {
+    justify-content: center;
+  }
+}

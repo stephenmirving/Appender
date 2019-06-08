@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+Stephen Irving - Designer / Developer - @stephenmirving
+
+# THANKS
+
+    Thank you to Michael Graham Irving
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5, JavaScript Es6, jQuery, Apache Server Configs, Modernizr

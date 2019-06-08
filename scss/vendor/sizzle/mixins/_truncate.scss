@@ -1,0 +1,13 @@
+@charset 'UTF-8';
+
+/// Truncates a given field with ellipses by default.
+///
+/// @param {Keyword} $overflow [ellipsis] - A text-overflow property value
+///
+/// @throw Invalid data type for $width
+@mixin truncate($overflow: ellipsis) {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: $overflow;
+  white-space: nowrap !important;
+}

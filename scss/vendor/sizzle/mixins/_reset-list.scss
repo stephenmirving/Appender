@@ -1,0 +1,17 @@
+@charset 'UTF-8';
+
+/// Resets an ordered or unordered list to have no inherent style
+/// @alias list-reset
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/// Resets an ordered or unordered list to have no inherent style
+/// @alias reset-list
+@mixin list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

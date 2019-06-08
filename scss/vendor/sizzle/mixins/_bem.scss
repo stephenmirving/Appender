@@ -1,0 +1,21 @@
+@charset 'UTF-8';
+
+/// Block Element - Used with BEM (Block-Element-Modifier) naming convention
+/// @content
+///
+/// @param {String} $element - Element's name
+@mixin elem($element) {
+    &__#{$element} {
+        @content;
+    }
+}
+
+/// Block Modifier - Used with BEM (Block-Element-Modifier) naming convention
+/// @content
+///
+/// @param {String} $modifier - Modifier's name
+@mixin mod($modifier) {
+    &--#{$modifier} {
+        @content;
+    }
+}

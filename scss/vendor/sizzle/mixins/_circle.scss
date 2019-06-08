@@ -1,0 +1,7 @@
+@charset 'UTF-8';
+
+/// Turns the element into a circle.
+@mixin circle {
+  background-clip: padding-box;
+  border-radius: 50%;
+}

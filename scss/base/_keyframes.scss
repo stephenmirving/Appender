@@ -1,0 +1,39 @@
+// base/_keyframes.scss
+
+// @keyframes bounce-in {
+// 	0% {
+// 		animation-timing-function: ease-in;
+// 		opacity: 0;
+// 		transform: translateY(-500px);
+// 	}
+
+// 	38% {
+// 		animation-timing-function: ease-out;
+// 		opacity: 1;
+// 		transform: translateY(0);
+// 	}
+
+// 	55% {
+// 		animation-timing-function: ease-in;
+// 		transform: translateY(-65px);
+// 	}
+
+// 	72%,
+//   90%,
+//   100% {
+// 		animation-timing-function: ease-out;
+// 		transform: translateY(0);
+// 	}
+
+// 	81% {
+// 		animation-timing-function: ease-in;
+// 		transform: translateY(-28px);
+// 	}
+
+// 	95% {
+// 		animation-timing-function: ease-in;
+// 		transform: translateY(-8px);
+// 	}
+// }
+
+@include fast-frames(spin-forever, transform, rotate(0), rotate(4turn));

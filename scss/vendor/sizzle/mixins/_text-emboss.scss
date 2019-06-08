@@ -1,0 +1,10 @@
+@charset 'UTF-8';
+
+/// Apply an embossing text shadow effect.
+/// @param {Float} $opacity - The opacity value.
+/// @param {Color} $color [#FFF} - The embossing shadow's color value. Must
+/// either be a 3 or 6 digit hex-code or just the comma-separated red, green,
+/// and blue values.
+@mixin text-emboss($opacity, $color: #FFF) {
+  text-shadow: 0 1px 0 rgba($color, $opacity);
+}
