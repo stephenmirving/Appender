@@ -1,0 +1,33 @@
+{
+  "name": "appender",
+  "version": "0.1.1",
+  "description": "A text file appending application.",
+  "main": "js/main.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephenmirving/Appender.git"
+  },
+  "keywords": [
+    "Text",
+    "Appender",
+    "text-file",
+    "JavaScript"
+  ],
+  "author": "Stephen M Irving",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stephenmirving/Appender/issues"
+  },
+  "homepage": "https://github.com/stephenmirving/Appender#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.13.0",
+    "htmlhint": "^0.11.0"
+  }
+}

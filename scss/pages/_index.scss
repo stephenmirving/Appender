@@ -22,26 +22,15 @@
   width: 85vmax;
 }
 
-.header-main {
-  @include animation-stage;
-  top: 0;
-  text-align: center;
-  position: absolute;
-  margin-top: -30px;
-  width: 100%;
-}
-
 .infinity {
   @include infinity-symbol($white);
   margin-bottom: 2rem;
 }
 
 .upload-area {
-  @include scrollbar(10px, $dark-gray, $is-internal: true);
-  background: $off-black-2;
   border-radius: 1.5rem;
-  padding: 3rem;
-  margin: 0 0 3rem;
+  padding: 2.5rem;
+  margin: 0 0 3rem -20rem;
   max-height: 34rem;
   overflow-x: hidden;
   overflow-y: auto;

@@ -35,30 +35,30 @@
         <p class="para--last">There are many like it, but this one is mine.</p>
         <h2 class="h2--welcome">Welcome to Appendr</h2>
       </section>
-      <div class="upload-area" id="upload_area">
+      <div class="upload-area" id="uploadArea">
         <section class="section">
-          <label for="file_input_1" class="label--first">File No. 1</label>
-          <input class="input--file--first" id="file_input_1" type="file" required>
+          <label for="fileInput1" class="label">File No.1</label>
+          <input class="input--file--first" id="fileInput1" type="file" required>
         </section>
         <section class="section">
-          <label for="file_input_2" class="label">File No. 2</label>
-          <input class="input--file" id="file_input_2" type="file" required>
+          <label for="fileInput2" class="label">Add Files</label>
+          <input class="input--file" id="fileInput2" type="file" multiple required>
         </section>
         <section class="section">
-          <label for="file_input_3" class="label">File No. 3</label>
-          <input class="input--file" id="file_input_3" type="file">
+          <label for="fileInputName" class="label">Name File</label>
+          <input class="input--file--last" id="fileInput2" type="text" required>
         </section>
         <section class="section" id="last">
-          <label for="file_input_4" class="label--last">File No. 4</label>
-          <input class="input--file--last" id="file_input_4" type="file">
+          <div class="new-file-msg">New File</div>
+          <div class="output" id="fileOutput"></div>
         </section>
       </div>
       <section class="section--btns">
-        <button class="btn--primary" id="btn_more_fields" title="Click here to add more files" type="button">add more files</button>
         <button class="btn--primary" id="btn_append" title="Click here to append" type="button">append</button>
       </section>
     </main>
   </div>
+
   <script src="js/vendor/modernizr-3.7.1.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
           integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -76,5 +76,4 @@
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>
   -->
 </body>
-
 </html>
