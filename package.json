@@ -26,8 +26,10 @@
   },
   "homepage": "https://github.com/stephenmirving/Appender#readme",
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "eslint": "^6.0.1",
     "eslint-config-google": "^0.13.0",
-    "htmlhint": "^0.11.0"
+    "htmlhint": "^0.11.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-recommended": "^2.2.0"
   }
 }

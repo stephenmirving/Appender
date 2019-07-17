@@ -1,7 +1,7 @@
 (function() {
   $('#btn_more_fields').click(function() {
-    const lastInputId = $('.input--file--last').attr('id');
-          lastNum = lastInputId.substr(lastInputId.length - 1);
+    const lastInputId = $('.input--file--last').attr('id'),
+          lastNum = lastInputId.substr(lastInputId.length - 1),
           section = $(
       '<section class="section" id="last">' +
         '<label for="file_input_4" class="label--last">File No. ' + lastNum + '</label>' +
